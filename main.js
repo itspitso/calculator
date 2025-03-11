@@ -23,19 +23,19 @@ let firstNumber;
 let operator;
 let secondNumber;
 
-const operate = function(first, op, second) {
+function operate(first, op, second) {
     switch (op) {
         case '+':
-            add(first, second);
+            return add(first, second);
             break;
         case '-':
-            subtract(first, second);
+            return subtract(first, second);
             break;
         case '*':
-            multiply(first, second);
+            return multiply(first, second);
             break;
         case '/':
-            divide(first, second);
+            return divide(first, second);
             break;
         default:
             throw new Error("Operator not recognised");
