@@ -6,3 +6,17 @@
 body {
     background: linear-gradient(45deg, #ffcccc, #ccffff);
 }
+
+.calculator {
+    width: 40%;
+    height: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: (5, 100px);
+}
+
+.calculator-screen {
+    grid-row: 1/2;
+    grid-column: 1/5;
+}
