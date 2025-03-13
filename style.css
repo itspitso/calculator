@@ -8,15 +8,23 @@ body {
 }
 
 .calculator {
-    width: 40%;
-    height: 80%;
+    width: 412px;
+    padding: 16px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: (5, 100px);
+    grid-template-rows: (6, 100px);
+    gap: 4px;
+    border: 1px solid black;
+}
+
+.calculator-buttons {
+    width: 100px;
+    height: 75px;
 }
 
 .calculator-screen {
-    grid-row: 1/2;
-    grid-column: 1/5;
+    grid-area: 1/1/2/5;
+    height: 75px;
+    border: 1px solid black;
 }
