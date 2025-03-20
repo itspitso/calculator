@@ -16,11 +16,11 @@ body {
     grid-template-rows: (6, 100px);
     grid-template-areas: 
         'screen screen screen screen'
-        'clear backspace percentage divide'
+        'clear negate percentage divide'
         'seven eight nine multiply'
         'four five six minus'
         'one two three plus'
-        'negate zero period equal';
+        'period zero equal equal';
     gap: 4px;
 }
 
@@ -34,6 +34,11 @@ body {
     height: 75px;
 }
 
+.buttons-style {
+    color:rgb(39, 39, 39);
+    font-size: 36px;
+}
+
 .calculator-screen {
     grid-area: screen;
     height: 75px;
@@ -45,4 +50,9 @@ body {
     color: whitesmoke;
     font-size: 60px;
     text-align: right;
+}
+
+.equal {
+    width:204px;
+    grid-area: equal;
 }
