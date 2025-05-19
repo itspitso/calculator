@@ -10,6 +10,13 @@ body {
     font-family: 'Tauri', sans-serif;
 }
 
+.calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .calculator-structure {
     width: 412px;
     padding: 16px;
