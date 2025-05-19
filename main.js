@@ -12,7 +12,7 @@ const multiply = function(num1, num2) {
 
 const divide = function(num1, num2) {
     if (num2 === 0) {
-        screen.innerText = "Nope! Can't do that."
+        screen.textContent = "Nope! Can't do that."
     }
     return num1 / num2;
 }
@@ -22,7 +22,7 @@ let operator;
 let secondNumber;
 let expression;
 let result;
-const opRegex = /+|*|-|\//;
+//const opRegex = /+|*|-|\//;
 
 const operate = function(first, op, second) {
     switch (op) {
@@ -43,23 +43,22 @@ const operate = function(first, op, second) {
     }
 }
 
-const screen = document.querySelector(".screen");
-const clearButton = document.querySelector(".clear").onclick(reset);
-const negateButton = document.querySelector(".negate");
-const percentageButton = document.querySelector(".percentage");
-const divideButton = document.querySelector(".divide");
-const sevenButton = document.querySelector(".seven");
-const eightButton = document.querySelector(".eight");
-const nineButton = document.querySelector(".nine");
-const multiplyButton = document.querySelector(".multiply");
-const fourButton = document.querySelector(".four");
-const fiveButton = document.querySelector(".five");
-const sixButton = document.querySelector(".six");
-const minusButton = document.querySelector(".minus")
-const oneButton = document.querySelector(".one");
-const twoButton = document.querySelector(".two");
-const threeButton = document.querySelector(".three");
-const plusButton = document.querySelector(".plus");
-const periodButton = document.querySelector(".period")
-const zeroButton = document.querySelector(".zero");
-const equalButton = document.querySelector(".equal");
+const numbersAndOperators = document.querySelectorAll(".number-operator");
+const screen = document.querySelector(".calculator-screen");
+const clearButton = document.querySelector(".clear");
+
+function display(btn) {
+    screen.textContent += btn.textContent;
+}
+
+function clearScreen() {
+    screen.textContent = "";
+}
+
+numbersAndOperators.forEach((button) => {
+    button.addEventListener("click", () => {
+        display(button);
+    });
+});
+
+clearButton.addEventListener("click", clearScreen);
