@@ -62,3 +62,11 @@ numbersAndOperators.forEach((button) => {
 });
 
 clearButton.addEventListener("click", clearScreen);
+
+const equalButton = document.querySelector(".equal");
+equalButton.addEventListener("click", () => {
+    expression = screen.textContent;
+    screen.textContent = "";
+    result = Function("return " + expression)();
+    screen.textContent= result;
+});
