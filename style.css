@@ -26,7 +26,7 @@ body {
     grid-template-rows: (6, 100px);
     grid-template-areas: 
         'screen screen screen screen'
-        'clear negate percentage divide'
+        'clear backspace percentage divide'
         'seven eight nine multiply'
         'four five six minus'
         'one two three plus'
@@ -76,6 +76,6 @@ body {
     grid-area: clear;
 }
 
-.negate {
-    grid-area: negate;
+.backspace {
+    grid-area: backspace;
 }
