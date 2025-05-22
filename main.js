@@ -23,7 +23,6 @@ let secondNumber;
 let expression;
 let result;
 //const digitRegex = /^\d+(\.\d+)?$/;
-const digitRegex = /^[+-]?\d+(\.\d+)?[eE][+-]?\d+$/;
 //const opRegex = /+|*|-|\//;
 
 const operate = function(first, op, second) {
