@@ -70,3 +70,15 @@ equalButton.addEventListener("click", () => {
     result = Function("return " + expression)();
     screen.textContent= result;
 });
+
+const percentButton = document.querySelector(".percentage");
+percentButton.addEventListener("click", () => {
+    const numberToConvert = screen.textContent;
+    if (numberToConvert === "") {
+        screen.textContent = '0';
+    }
+    else {
+        const result = parseInt(numberToConvert) / 100;
+        screen.textContent = result;
+    }
+});
