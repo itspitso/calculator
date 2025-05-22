@@ -22,6 +22,8 @@ let operator;
 let secondNumber;
 let expression;
 let result;
+//const digitRegex = /^\d+(\.\d+)?$/;
+const digitRegex = /^[+-]?\d+(\.\d+)?[eE][+-]?\d+$/;
 //const opRegex = /+|*|-|\//;
 
 const operate = function(first, op, second) {
@@ -74,11 +76,13 @@ equalButton.addEventListener("click", () => {
 const percentButton = document.querySelector(".percentage");
 percentButton.addEventListener("click", () => {
     const numberToConvert = screen.textContent;
-    if (numberToConvert === "") {
+    if (numberToConvert === "" || !digitRegex.test(numberToConvert)) {
         screen.textContent = '0';
     }
     else {
-        const result = parseInt(numberToConvert) / 100;
+        result = Number(numberToConvert) / 100;
         screen.textContent = result;
     }
 });
+
+
