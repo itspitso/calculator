@@ -22,7 +22,7 @@ let operator;
 let secondNumber;
 let expression;
 let result;
-//const digitRegex = /^\d+(\.\d+)?$/;
+const digitRegex = /^\d+(\.\d+)?$/;
 //const opRegex = /+|*|-|\//;
 
 const operate = function(first, op, second) {
@@ -84,4 +84,12 @@ percentButton.addEventListener("click", () => {
     }
 });
 
+const backSpace = document.querySelector(".backspace");
+backSpace.addEventListener("click", () => {
+    if (screen.textContent !== "") {
+        const onScreen = screen.textContent;
+        const length = onScreen.length;
+        screen.textContent = onScreen.slice(0, length-2);
+    }
+});
 
