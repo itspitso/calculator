@@ -12,9 +12,11 @@ const multiply = function(num1, num2) {
 
 const divide = function(num1, num2) {
     if (num2 === 0) {
-        screen.textContent = "Nope! Can't do that."
+        return "Ooooops!"
     }
-    return num1 / num2;
+    else {
+        return num1 / num2;
+    }
 }
 
 let firstNumber;
@@ -44,7 +46,8 @@ const operate = function(first, op, second) {
     }
 }
 
-const numbersAndOperators = document.querySelectorAll(".number-operator");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
 const screen = document.querySelector(".calculator-screen");
 const clearButton = document.querySelector(".clear");
 
@@ -56,27 +59,38 @@ function clearScreen() {
     screen.textContent = "";
 }
 
-numbersAndOperators.forEach((button) => {
+numbers.forEach((button) => {
     button.addEventListener("click", () => {
         display(button);
     });
 });
 
+operators.forEach((op) => {
+    op.addEventListener("click", (e) => {
+    firstNumber = Number(screen.textContent);
+    operator = op.textContent;
+    screen.textContent = "";
+    console.log(firstNumber);
+    console.log(operator);
+    });
+});
+
+
 clearButton.addEventListener("click", clearScreen);
 
 const equalButton = document.querySelector(".equal");
 equalButton.addEventListener("click", () => {
-    expression = screen.textContent;
+    secondNumber = Number(screen.textContent);
     screen.textContent = "";
-    result = Function("return " + expression)();
-    screen.textContent= result;
+    result = operate(firstNumber, operator, secondNumber);
+    screen.textContent = result;
 });
 
 const percentButton = document.querySelector(".percentage");
 percentButton.addEventListener("click", () => {
     const numberToConvert = screen.textContent;
     if (numberToConvert === "" || !digitRegex.test(numberToConvert)) {
-        screen.textContent = '0';
+        screen.textContent = '';
     }
     else {
         result = Number(numberToConvert) / 100;
@@ -89,7 +103,7 @@ backSpace.addEventListener("click", () => {
     if (screen.textContent !== "") {
         const onScreen = screen.textContent;
         const length = onScreen.length;
-        screen.textContent = onScreen.slice(0, length-2);
+        screen.textContent = onScreen.slice(0, length-1);
     }
 });
 
