@@ -66,6 +66,9 @@ body {
     font-size: 60px;
     text-align: right;
     border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 8px;
 }
 
 .zero {
