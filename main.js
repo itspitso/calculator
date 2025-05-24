@@ -49,6 +49,9 @@ const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const screen = document.querySelector(".calculator-screen");
 const clearButton = document.querySelector(".clear");
+const percentButton = document.querySelector(".percentage");
+const equalButton = document.querySelector(".equal");
+const backSpace = document.querySelector(".backspace");
 
 function clearScreen() {
     screen.textContent = "";
@@ -63,6 +66,10 @@ function display(btn) {
     else {
         screen.textContent += btn.textContent;
     }
+}
+
+function isFloat(num) {
+    return Number(num) === num && num % 1 !== 0;
 }
 
 numbers.forEach((button) => {
@@ -81,15 +88,16 @@ operators.forEach((op) => {
     });
 });
 
-
 clearButton.addEventListener("click", clearScreen);
 
-const equalButton = document.querySelector(".equal");
 equalButton.addEventListener("click", () => {
     secondNumber = Number(screen.textContent);
     screen.textContent = "";
     if (firstNumber !== undefined && operator !== undefined) {
         result = operate(firstNumber, operator, secondNumber);
+        if (isFloat(result) && result.toString().length > 10) {
+            result = result.toFixed(6);
+        }
         screen.textContent = result;
     }
     else {
@@ -101,19 +109,22 @@ equalButton.addEventListener("click", () => {
     secondNumber = undefined;
 });
 
-const percentButton = document.querySelector(".percentage");
 percentButton.addEventListener("click", () => {
     const numberToConvert = screen.textContent;
     if (numberToConvert === "" || !digitRegex.test(numberToConvert)) {
-        screen.textContent = '';
+        if (result !== undefined) {
+            screen.textContent = result;
+        }
     }
     else {
         result = Number(numberToConvert) / 100;
+        if (result.toString().length > 10) {
+            result = result.toFixed(6);
+        }
         screen.textContent = result;
     }
 });
 
-const backSpace = document.querySelector(".backspace");
 backSpace.addEventListener("click", () => {
     if (screen.textContent !== "") {
         const onScreen = screen.textContent;
