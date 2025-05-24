@@ -25,7 +25,6 @@ let secondNumber;
 let expression;
 let result;
 const digitRegex = /^\d+(\.\d+)?$/;
-//const opRegex = /+|*|-|\//;
 
 const operate = function(first, op, second) {
     switch (op) {
@@ -51,12 +50,19 @@ const operators = document.querySelectorAll(".operator");
 const screen = document.querySelector(".calculator-screen");
 const clearButton = document.querySelector(".clear");
 
-function display(btn) {
-    screen.textContent += btn.textContent;
-}
-
 function clearScreen() {
     screen.textContent = "";
+}
+
+function display(btn) {
+    if (result !== undefined) {
+        result = undefined;
+        clearScreen();
+        screen.textContent += btn.textContent;
+    }
+    else {
+        screen.textContent += btn.textContent;
+    }
 }
 
 numbers.forEach((button) => {
@@ -82,8 +88,17 @@ const equalButton = document.querySelector(".equal");
 equalButton.addEventListener("click", () => {
     secondNumber = Number(screen.textContent);
     screen.textContent = "";
-    result = operate(firstNumber, operator, secondNumber);
-    screen.textContent = result;
+    if (firstNumber !== undefined && operator !== undefined) {
+        result = operate(firstNumber, operator, secondNumber);
+        screen.textContent = result;
+    }
+    else {
+        result = secondNumber;
+        screen.textContent = result;
+    }
+    firstNumber = undefined;
+    operator = undefined;
+    secondNumber = undefined;
 });
 
 const percentButton = document.querySelector(".percentage");
