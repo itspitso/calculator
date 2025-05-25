@@ -61,10 +61,10 @@ function display(btn) {
     if (result !== undefined) {
         result = undefined;
         clearScreen();
-        screen.textContent += btn.textContent;
+        if (screen.textContent.length < 10) screen.textContent += btn.textContent;
     }
     else {
-        screen.textContent += btn.textContent;
+        if (screen.textContent.length < 10) screen.textContent += btn.textContent;
     }
 }
 
@@ -82,9 +82,7 @@ operators.forEach((op) => {
     op.addEventListener("click", (e) => {
     firstNumber = Number(screen.textContent);
     operator = op.textContent;
-    screen.textContent = "";
-    console.log(firstNumber);
-    console.log(operator);
+    clearScreen();
     });
 });
 
@@ -92,13 +90,20 @@ clearButton.addEventListener("click", clearScreen);
 
 equalButton.addEventListener("click", () => {
     secondNumber = Number(screen.textContent);
-    screen.textContent = "";
+    clearScreen();
     if (firstNumber !== undefined && operator !== undefined) {
         result = operate(firstNumber, operator, secondNumber);
         if (isFloat(result) && result.toString().length > 10) {
             result = result.toFixed(6);
+            screen.textContent = result;
         }
-        screen.textContent = result;
+        else if (result.toString().length > 10) {
+            result = result.toExponential(6);
+            screen.textContent = result;
+        }
+        else {
+            screen.textContent = result;
+        }
     }
     else {
         result = secondNumber;
